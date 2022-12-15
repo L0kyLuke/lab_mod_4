@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                url: 'https://github.com/L0kyLuke/lab_mod_4.git'
+                git clone https://github.com/L0kyLuke/lab_mod_4.git
             }
         }
         stage('Compile') {
