@@ -2,9 +2,19 @@ pipeline {
     agent any
 
     stages {
-        stage('stage-1') {
+        stage('Checkout') {
             steps {
-                echo "This is the build number $BUILD_NUMBER"
+                git url: ‘https://github.com/L0kyLuke/lab_mod_4.git’
+            }
+        }
+        stage('Compile') {
+            steps {
+                sh './gradlew compileJava'
+            }
+        }
+        stage('Unit Tests') {
+            steps {
+                sh './gradlew test'
             }
         }
     }
