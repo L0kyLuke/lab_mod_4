@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                echo "This is the build number $BUILD_NUMBER"
+                git url: ‘https://github.com/L0kyLuke/lab_mod_4.git’
             }
         }
         stage('Compile') {
