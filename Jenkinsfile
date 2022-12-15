@@ -10,12 +10,12 @@ pipeline {
         }
         stage('Compile') {
             steps {
-                sh './gradlew compileJava'
+                sh './gradlew.bat compileJava'
             }
         }
         stage('Unit Tests') {
             steps {
-                sh './gradlew test'
+                sh './gradlew.bat test'
             }
         }
     }
