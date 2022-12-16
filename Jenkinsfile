@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { java-docker-slave }
+        docker { image 'java-docker-slave' }
     }
 
     stages {
