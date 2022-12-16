@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'gradle:6.6.1-jre14-openj9' }
+        docker { image 'node:16-alpine' }
     }
 
     stages {
