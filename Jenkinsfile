@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'jenkins:latest'
+            image 'gradle:6.6.1-jre14-openj9'
             }
     }
 
