@@ -1,22 +1,34 @@
 pipeline {
-    agent {
-        docker { image 'gradle:6.6.1-jre14-openj9' }
+    agent {// especificamos que el agente será Docker. Al estar en la raíz todos los stages se ejecutarán en un contenedor que use la imagen de Docker, así si trabajamos con distintos nodos no hace falta instalar Node.js en cada uno de ellos
+        docker {
+            image 'node:alpine3.12' // Especificamos la imagen a utilizar que se instalará en el nodo de Docker y se accederá desde el nodo de Jenkins
+        }
     }
-
     stages {
-        stage('Checkout') {
+        stage('Verify') {
             steps {
-                git url: 'https://github.com/L0kyLuke/lab_mod_4.git', branch: 'main'
+                sh '''
+                  node --version
+                  npm version
+                '''
+                sh 'printenv | sort' // Imprimir variables de intorno
             }
         }
-        stage('Compile') {
+        stage('Build') { // Hacemos el build del proyecto solution usado anteriormente
             steps {
-                sh './gradlew compileJava'
+                dir("$WORKSPACE/02/solution") { // Ponemos la ruta donde tenemos el proyecto deejemplos anteriores copiado
+                    sh '''
+                      npm install
+                      npm run build
+                    '''
+                }
             }
         }
-        stage('Unit Tests') {
+        stage('Unit Test') { // Hacemos un test
             steps {
-                sh './gradlew test'
+              dir("$WORKSPACE/02/solution") {
+                sh 'npm test'
+              }
             }
         }
     }
