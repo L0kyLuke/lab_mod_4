@@ -1,7 +1,7 @@
 pipeline {
     agent {// especificamos que el agente será Docker. Al estar en la raíz todos los stages se ejecutarán en un contenedor que use la imagen de Docker, así si trabajamos con distintos nodos no hace falta instalar Node.js en cada uno de ellos
         docker {
-            image 'node:alpine3.12' // Especificamos la imagen a utilizar que se instalará en el nodo de Docker y se accederá desde el nodo de Jenkins
+            image 'jenkins/jenkins:lts' // Especificamos la imagen a utilizar que se instalará en el nodo de Docker y se accederá desde el nodo de Jenkins
         }
     }
     stages {
