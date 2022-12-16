@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'java-docker-slave' }
+        docker { image 'gradle:6.6.1-jre14-openj9' }
     }
 
     stages {
