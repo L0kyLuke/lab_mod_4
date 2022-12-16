@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main',
     url: 'https://github.com/L0kyLuke/lab_mod_4.git'
             }
         }
