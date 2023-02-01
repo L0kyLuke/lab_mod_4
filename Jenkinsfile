@@ -9,12 +9,12 @@
             }
             stage('Compile') {
                 steps {
-                    sh './gradlew compileJava'
+                    sh './calculator/gradlew compileJava'
                 }
             }
             stage('Unit Tests') {
                 steps {
-                    sh './gradlew test'
+                    sh './calculator/gradlew test'
                 }
             }
         }
